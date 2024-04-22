@@ -1,0 +1,45 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+  merge_group:
+
+jobs:
+  build-cmake:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macOS-latest, windows-latest, ubuntu-20.04]
+        include:
+        - os: ubuntu-latest
+        - os: ubuntu-20.04
+        - os: macOS-latest
+        - os: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: true
+
+    - name: Prepare Linux
+      if: contains(matrix.os, 'ubuntu')
+      run: |
+        sudo apt-get update -y
+        sudo apt-get install -y shellcheck
+
+    - name: Prepare macOS
+      if: contains(matrix.os, 'macOS')
+      run: |
+        brew update || true
+        brew install shellcheck
+
+    - name: Shellcheck
+      if: contains(matrix.os, 'ubuntu')
+      run: find . -type f -name '*.sh' -print0 | xargs -0 shellcheck
+
+    - name: Run tests
+      run: |
+        bash ./test.sh
+
