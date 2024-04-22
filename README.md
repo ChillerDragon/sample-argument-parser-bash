@@ -34,3 +34,9 @@ got verbose flag
 output: test.txt
 ```
 
+## how to use it
+
+Copy the contents of `argparser.sh` into your script and add your own arguments.
+The code is licensed under the permissive BSD 2-clause license. You can edit, redistribute the code freely and without charge.
+For more details see the LICENSE file.
+
