@@ -1,5 +1,13 @@
 # sample argument parser bash
 
+Cross platform example of cli argument parsing in bash.
+
+
+Tested in the CI on macOS, windows and linux.
+
+
+Depends on the tool `cut` to be in PATH
+
 ```
 $ ./argparser.sh foo bar baz
 got positional argument: foo
@@ -24,5 +32,5 @@ $ ./argparser.sh --output=foo.txt -vo test.txt
 output: foo.txt
 got verbose flag
 output: test.txt
-``
+```
 
