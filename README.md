@@ -5,8 +5,7 @@ Cross platform example of cli argument parsing in bash.
 
 Tested in the CI on macOS, windows and linux.
 
-
-Depends on the tool `cut` to be in PATH
+Depends on no external tools and is written in pure bash.
 
 ```
 $ ./argparser.sh foo bar baz

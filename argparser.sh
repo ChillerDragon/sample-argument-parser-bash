@@ -26,7 +26,7 @@ parse_args() {
 		then
 			if [[ "$arg" == "--output="* ]]
 			then
-				output="$(echo "$arg" | cut -d= -f2-)"
+				output="${arg#*=}"
 				log "output: $output"
 			elif [ "$arg" == "--output" ]
 			then
